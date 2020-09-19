@@ -1,0 +1,10 @@
+telegram_bot_token: '1234567890:XXXXXXXXXXXXXXXXXXXXXXXX'
+deconz_api_key: 'XXXXXXXXXX'
+sensor_id: '12'
+deconz_rest: 'http://192.168.1.123:8080/api/'
+deconz_websocket: 'ws://192.168.1.123:443/'
+telegram_chat_id: '12345678'
+message_start: "You are now able to receive messages from ShitMK."
+message_init: "ShitMK has been started."
+message_occupied: "The bathroom is occupied... :("
+message_vacant: "The bathroom is vacant! :)"
