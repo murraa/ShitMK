@@ -31,6 +31,19 @@ occupied = False
 
 
 # websocket client
+class WsClient(object):
+    def __init__(self):
+        self.ws = websocket.WebSocketApp(config['deconz_websocket'],
+                                         on_message=on_message,
+                                         on_open=self.on_open)
+
+    def run_forever(self):
+        self.ws.run_forever()
+
+    def on_open(self):
+        bot.sendMessage(chat_id=config['telegram_chat_id'], text=config['message_init'])
+
+
 def on_message(message):
     global occupied
     event = json.loads(message)
@@ -43,8 +56,6 @@ def on_message(message):
             bot.sendMessage(chat_id=config['telegram_chat_id'], text=config['message_vacant'])
 
 
-ws = websocket.WebSocketApp(config['deconz_websocket'])
-
-bot.sendMessage(chat_id=config['telegram_chat_id'], text=config['message_init'])
-
-ws.run_forever()
+if __name__ == '__main__':
+    ws = WsClient()
+    ws.run_forever()
